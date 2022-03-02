@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="rviz_conf" default="$(find rovit_navsys)/rviz/odometry_rviz.rviz"/>
+    <node pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(arg rviz_conf)" required="true"/>
+</launch>

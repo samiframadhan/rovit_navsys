@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: rovit_navsys
+Description: Description of rovit_navsys
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lrovit_navsys
+Requires: message_runtime

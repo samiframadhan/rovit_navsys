@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="userosbag" default="false"/>
+    <arg name="useamcl" default="true"/>
+    <arg name="use_autonav" default="false"/>
+    
+    
+    <include file="$(find rovit_navsys)/launch/nav_init.launch">
+    <arg name="use_odom_tf" value="false"/>
+    <arg name="use_rosbag" value="$(arg userosbag)"/>
+    <arg name="use_amcl" value="$(arg useamcl)"/>
+        </include>
+    <!-- <include file="$(find rovit_navsys)/launch/realsense.launch" /> -->
+    <include file="$(find rovit_navsys)/launch/imu_fusion.launch">
+    <arg name="use_mpu" value="true"/>
+    <arg name="use_madgwick" value="false"/>
+    <arg name="use_complementary" value="false"/>
+    </include>
+    <!-- </include> -->
+    <!-- <include file="$(find rovit_navsys)/launch/localization.launch" if="(arg use"/> -->
+    <include file="$(find rovit_navsys)/launch/visualization_localization.launch" unless="$(arg use_autonav)"/>
+</launch>

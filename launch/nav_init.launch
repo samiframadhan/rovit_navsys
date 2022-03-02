@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="use_rosbag" default="false"/>
+    <arg name="use_amcl" default="false"/>
+    <arg name="use_odom_tf" default="true"/>
+    <arg name="path" default="/home/rovit/"/>
+    <arg name="file_1" default="imuscanodom"/>
+
+    <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen" unless="$(arg use_rosbag)">
+        <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
+        <!-- A1/A2 -->
+        <param name="serial_baudrate"     type="int"    value="115200"/>
+        <!-- param name="serial_baudrate"     type="int"    value="256000"A3 -->
+        <param name="frame_id"            type="string" value="laser_link"/>
+        <param name="inverted"            type="bool"   value="false"/>
+        <param name="angle_compensate"    type="bool"   value="true"/>
+    </node>
+
+    <node pkg="rosserial_python" type="serial_node.py" name="serial_node" unless="$(arg use_rosbag)">
+        <param name="port" value="/dev/ttyUSB1"/>
+        <param name="baud" value="576000"/>
+    </node>
+    <node pkg="rosbag" type="play" name="play" output="screen" args="--clock $(arg path)$(arg file_1).bag" if="$(arg use_rosbag)"/>
+
+    <node pkg="rovit_navsys" type="new_odom" name="odom_from_arduino">
+        <param name="publish_tf" value="$(arg use_odom_tf)"/>
+        <param name="linear_scale_positive" value="1.0"/>
+        <param name="linear_scale_negative" value="1.0"/>
+        <param name="angular_scale_positive" value="1.0"/>
+        <param name="angular_scale_negative" value="1.0"/>
+        <param name="publish_rate" value="80"/>
+    </node>
+
+    <include file="$(find rovit_navsys)/launch/tf_transforms.launch"/>
+    <include file="$(find rovit_navsys)/launch/localization.launch" if="$(arg use_amcl)"/>
+    <!-- <include file="$(find rovit_navsys)/launch/auto_nav.launch"/> -->
+    <!-- <include file="$(find rovit_navsys)/launch/visualization_odom.launch"/> -->
+</launch>

@@ -1,0 +1,24 @@
+# ninja log v5
+0	29	0	CMakeFiles/_rovit_navsys_generate_messages_check_deps_debug	7d255e779e987d92
+29	76	1642540995199085041	devel/share/gennodejs/ros/rovit_navsys/msg/debug.js	fdf6900190db8be4
+30	78	1642540995203085140	devel/share/common-lisp/ros/rovit_navsys/msg/debug.lisp	659dee08f728c5fc
+29	120	1642540995243086118	devel/share/roseus/ros/rovit_navsys/msg/debug.l	9443cb822c949d60
+29	190	1642540995311087781	devel/include/rovit_navsys/debug.h	71c6cce6d4cbc009
+29	296	1642540995403090031	devel/lib/python3/dist-packages/rovit_navsys/msg/_debug.py	28a63ac62ba748c1
+296	537	1642540995647095999	devel/lib/python3/dist-packages/rovit_navsys/msg/__init__.py	918e19aec2f00ce8
+29	652	1642540995771099031	devel/share/roseus/ros/rovit_navsys/manifest.l	e8de25970249b910
+0	2729	1642540997855149926	CMakeFiles/odom_node.dir/src/odom_from_arduino.cpp.o	1c4f057a5b46822
+2731	2870	1642540997999153440	devel/lib/rovit_navsys/odom_node	56e313aac2cfd893
+0	2890	1642540998015153830	CMakeFiles/new_odom.dir/src/new_odom.cpp.o	3b3fb290894782ab
+2890	3030	1642540998155157243	devel/lib/rovit_navsys/new_odom	f925f682d8809cd5
+0	3970	1642540999095180152	CMakeFiles/set_goal.dir/src/set_goal.cpp.o	244052a3f1cc20dd
+3971	4144	1642540999271184437	devel/lib/rovit_navsys/set_goal	e7b607d37b32677e
+2	28	0	CMakeFiles/_rovit_navsys_generate_messages_check_deps_debug	7d255e779e987d92
+29	64	1642544853665930743	devel/share/common-lisp/ros/rovit_navsys/msg/debug.lisp	659dee08f728c5fc
+28	76	1642544853677931037	devel/share/gennodejs/ros/rovit_navsys/msg/debug.js	fdf6900190db8be4
+29	96	1642544853693931430	devel/share/roseus/ros/rovit_navsys/msg/debug.l	9443cb822c949d60
+28	160	1642544853749932802	devel/lib/python3/dist-packages/rovit_navsys/msg/_debug.py	28a63ac62ba748c1
+29	164	1642544853765933195	devel/include/rovit_navsys/debug.h	71c6cce6d4cbc009
+160	330	1642544853921937017	devel/lib/python3/dist-packages/rovit_navsys/msg/__init__.py	918e19aec2f00ce8
+164	2446	1642544856049989068	CMakeFiles/new_odom.dir/src/new_odom.cpp.o	3b3fb290894782ab
+2446	2582	1642544856185992388	devel/lib/rovit_navsys/new_odom	f925f682d8809cd5

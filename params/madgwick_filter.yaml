@@ -1,0 +1,14 @@
+fixed_frame: imu_link
+use_mag: false
+gain : 0.1
+zeta : 0.0
+mag_bias_x: 0.0
+mag_bias_y: 0.0
+mag_bias_z: 0.0
+orientation_stddev: 0.03
+remove_gravity_vector: true
+world_frame : ned
+use_magnetic_field : false
+constant_dt : 0.0
+publish_debug_topics : false
+stateless : false

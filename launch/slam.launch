@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find rovit_navsys)/launch/nav_init.launch" />
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <rosparam file="$(find rovit_navsys)/params/gmapping.yaml" command="load"/>
+    </node>
+    <include file="$(find rovit_navsys)/launch/visualization_slam.launch" />
+</launch>

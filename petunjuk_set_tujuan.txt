@@ -1,0 +1,3 @@
+Step untuk memberi tujuan robot:
+1. Jalankan node navigasi (rosserial, tf_transform, map_server, amcl, move_base, )
+2. Jalankan script nomor ruangan (./bin/set_goal room_num:=(1/2/3))

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <param name="enable_depth" value="true"/>
+    <param name="enable_pointcloud" value="true"/>
+    <param name="enable_sync" value="true"/>
+    <param name="enable_accel" value="true"/>
+    <param name="enable_gyro" value="true"/>
+    <param name="enable_depth" value="true"/>
+    </include>
+
+    <node name	= "laserscan_kinect"
+        pkg		= "laserscan_kinect"
+        type	= "laserscan_kinect">
+      <remap from="~image" to="/camera/depth/image_rect_raw"/>
+      <remap from="~camera_info" to="/camera/depth/camera_info"/>
+      <rosparam command="load" file="$(find laserscan_kinect)/config/params.yaml"/>
+  </node>
+    
+    <!-- <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
+        <remap from="image" to="camera/depth/image_rect_raw"/>
+        <remap from="camera_info" to="camera/depth/camera_info"/>
+        <param name="scan_height" value="1"/>
+        <param name="scan_time" value="0.033"/>
+        <param name="range_min" value="0.2"/>
+        <param name="range_max" value="8.0"/>
+        <param name="output_frame_id" value="laser_link_2"/>
+    </node> -->
+
+    <!-- <node pkg="tf" type="static_transform_publisher" name="laser_broadcaster" args="0 0 0 0 0 0 1 camera_link laser_link_2 100" /> -->
+    <!-- <arg name="rviz_file" default="$(find rovit_navsys)/rviz/depth.rviz"/> -->
+    <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_file)" required="true"/> -->
+</launch>

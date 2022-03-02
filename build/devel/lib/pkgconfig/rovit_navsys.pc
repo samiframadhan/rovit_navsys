@@ -1,0 +1,8 @@
+prefix=/home/rovit/rovit_nav/src/rovit_navsys/build/devel
+
+Name: rovit_navsys
+Description: Description of rovit_navsys
+Version: 0.0.0
+Cflags: -I/home/rovit/rovit_nav/src/rovit_navsys/build/devel/include -I/home/rovit/rovit_nav/src/rovit_navsys/include
+Libs: -L${prefix}/lib -lrovit_navsys
+Requires: message_runtime

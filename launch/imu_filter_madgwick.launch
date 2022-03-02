@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu_filter_node">
+    <rosparam file="$(find rovit_navsys)/params/madgwick_filter.yaml" command="load"/>
+    </node>
+</launch>

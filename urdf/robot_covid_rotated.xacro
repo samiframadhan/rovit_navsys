@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rovit">
+    <xacro:property name="robot_width" value="0.62"/>
+    <xacro:property name="robot_length" value="0.73"/>
+    <xacro:property name="robot_height" value="1.16"/>
+    <xacro:property name="pi" value="3.1415"/>
+    <xacro:property name="wheel_dia" value="0.32"/>
+    <xacro:property name="small_wheel_dia" value="0.19"/>
+    
+    <link name="base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi * 0.5} 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.62"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi * 0.5} 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.62"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+    </material>
+    <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+    <material name="blue">
+    <color rgba="0.0 0.0 1.0 1.0"/>
+    </material>
+    <material name="green">
+    <color rgba="0.0 1.0 0.0 1.0"/>
+    </material>
+    <material name="roda">
+        <color rgba="0.4 0.4313 0.40784 1.0"/>
+    </material>
+
+    <link name="base_plate">
+        <visual>
+            <origin xyz="0.16 0.0 ${robot_height * 0.5}"/>
+            <geometry>
+                <box size="${robot_width} ${robot_length} ${robot_height}"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="0.16 0.0 ${robot_height * 0.5}"/>
+            <geometry>
+                <geometry>
+                    <box size="${robot_width} ${robot_length} ${robot_height}"/>
+                </geometry>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="laser_link">
+        <visual>
+            <origin xyz="0.03 0.0 0.0" rpy="${pi * 0.5} 0.0 ${pi * -0.5}"/>
+            <geometry>
+                <!-- <box size="0.09 0.06 0.05"/> -->
+                <mesh filename="package://rovit_navsys/meshes/rplidar_main.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+    </link>
+
+    <link name="lb_wheel">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="${wheel_dia * 0.5}" length="0.07"/>
+            </geometry>
+            <material name="roda"/>
+        </visual>
+    </link>
+
+    <link name="rb_wheel">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="${wheel_dia * 0.5}" length="0.07"/>
+            </geometry>
+            <material name="roda"/>
+        </visual>
+    </link>
+
+    <link name="lf_wheel">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="${small_wheel_dia * 0.5}" length="0.04"/>
+            </geometry>
+            <material name="roda"/>
+        </visual>
+    </link>
+
+    <link name="rf_wheel">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="${small_wheel_dia * 0.5}" length="0.04"/>
+            </geometry>
+            <material name="roda"/>
+        </visual>
+    </link>
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="laser_link"/>
+        <origin xyz="0.33 0.0 0.17" rpy="0.0 0.0 ${pi * 0.5}"/>
+    </joint>
+
+    <joint name="plate_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_plate"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <joint name="lb_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="lb_wheel"/>
+        <origin xyz="0.0 ${robot_width * 0.5} 0.0" rpy="${pi * 0.5} 0.0 0.0"/>
+    </joint>
+    
+    <joint name="rb_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="rb_wheel"/>
+        <origin xyz="0.0 ${robot_width * -0.5} 0.0" rpy="${pi * 0.5} 0.0 0.0"/>
+    </joint>
+
+    <joint name="lf_wheel_joint" type="fixed">
+        <parent link="lb_wheel"/>
+        <child link="lf_wheel"/>
+        <origin xyz="0.55 -0.065 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <joint name="rf_wheel_joint" type="fixed">
+        <parent link="rb_wheel"/>
+        <child link="rf_wheel"/>
+        <origin xyz="0.55 -0.065 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <xacro:arg name="use_nominal_extrinsics" default="false"/>
+    <xacro:arg name="add_plug" default="false"/>
+    <xacro:arg name="use_mesh" default="false"/>
+    <xacro:include filename="$(find realsense2_description)/urdf/_l515.urdf.xacro"/>
+
+    <xacro:sensor_l515 parent="base_link" use_nominal_extrinsics="$(arg use_nominal_extrinsics)" add_plug="$(arg add_plug)" use_mesh="$(arg use_mesh)">
+    <origin xyz="0.1 0.0 ${robot_height + 0.03}" rpy="0.0 0.0 0.0"/>
+    </xacro:sensor_l515>
+    
+</robot>

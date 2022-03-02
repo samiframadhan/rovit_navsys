@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+<arg name="use_mpu" default="true"/>
+<arg name="use_madgwick" default="false"/>
+<arg name="use_complementary" default="false"/>
+    <node pkg="robot_localization" type="ekf_localization_node" name="robot_localization">
+        <rosparam file="$(find rovit_navsys)/params/imu_ekf.yaml" command="load" if="$(arg use_mpu)"/>
+        <rosparam file="$(find rovit_navsys)/params/imu_ekf_filtered.yaml" command="load" if="$(arg use_madgwick)"/>
+        <rosparam file="$(find rovit_navsys)/params/imu_ekf_filtered.yaml" command="load" if="$(arg use_complementary)"/>
+    </node>
+</launch>

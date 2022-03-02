@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="robot_model" default="$(find rovit_navsys)/urdf/robot_covid.xacro"/>
+    <param name="robot_description" command="$(find xacro)/xacro $(arg robot_model)"/>
+    <!-- Parameter gak bisa di dalem tag nodenya. -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+</launch>
