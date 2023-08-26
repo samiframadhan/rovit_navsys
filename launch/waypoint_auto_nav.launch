@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find rovit_navsys)/launch/nav_imu_init.launch">
+    <arg name="use_autonav" value="true"/>
+    </include>
+    <include file="$(find rovit_navsys)/launch/auto_nav.launch" />
+    <node pkg="waypoint" type="waypoint" name="waypoint" output="screen">
+    <!-- <include file="$(find rovit_navsys)/launch/localization.launch" /> -->
+    <include file="$(find rovit_navsys)/launch/visualization_auto_nav.launch">
+        <arg name="waypoint" value="true"/>
+    </include>
+</launch>
