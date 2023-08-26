@@ -72,7 +72,7 @@ add_message_files(
 generate_messages(
   DEPENDENCIES
   std_msgs
-  # rovit_navsys  # Or other packages containing msgs
+  rovit_navsys  # Or other packages containing msgs
 )
 
 ################################################
@@ -106,7 +106,6 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   CATKIN_DEPENDS message_runtime
- INCLUDE_DIRS include
  LIBRARIES rovit_navsys
 #  CATKIN_DEPENDS roscpp rospy rviz
 #  DEPENDS system_lib
