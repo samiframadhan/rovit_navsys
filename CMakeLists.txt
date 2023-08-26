@@ -72,7 +72,7 @@ add_message_files(
 generate_messages(
   DEPENDENCIES
   std_msgs
-  # rovit_navsys  # Or other packages containing msgs
+  rovit_navsys  # Or other packages containing msgs
 )
 
 ################################################
