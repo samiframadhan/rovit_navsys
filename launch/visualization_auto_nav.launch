@@ -2,6 +2,6 @@
 <launch>
     <arg name="rviz_conf" default="$(find rovit_navsys)/rviz/navigation.rviz"/>
     <arg name="waypoint" default="false"/>
-    <remap from="move_base_simple/goal" to="goal"/>
+    <remap from="move_base_simple/goal" to="waypoint" />
     <node pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(arg rviz_conf)" required="true"/>
 </launch>
