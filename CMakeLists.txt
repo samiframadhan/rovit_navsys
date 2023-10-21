@@ -55,11 +55,10 @@ add_message_files(
 )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  PID.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -106,7 +105,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   CATKIN_DEPENDS message_runtime
- INCLUDE_DIRS include
+# INCLUDE_DIRS include
  LIBRARIES rovit_navsys
 #  CATKIN_DEPENDS roscpp rospy rviz
 #  DEPENDS system_lib
