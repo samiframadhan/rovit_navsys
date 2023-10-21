@@ -2,7 +2,7 @@
 <launch>
     <arg name="use_global_fusion" default="false"/>
     
-    <arg name="map_file" value="$(find rovit_navsys)/maps/mapbaru.yaml"/>
+    <arg name="map_file" value="$(find rovit_navsys)/maps/allroomedited.yaml"/>
     <node pkg="amcl" type="amcl" name="amcl">
         <rosparam file="$(find rovit_navsys)/params/amcl_params.yaml" command="load" unless="$(arg use_global_fusion)"/>
         <rosparam file="$(find rovit_navsys)/config/amcl_fusion.yaml" command="load" if="$(arg use_global_fusion)" />

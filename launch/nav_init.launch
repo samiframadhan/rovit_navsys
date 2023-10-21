@@ -7,7 +7,7 @@
     <arg name="file_1" default="imuscanodom"/>
 
     <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen" unless="$(arg use_rosbag)">
-        <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
+        <param name="serial_port"         type="string" value="/dev/ttyUSB1"/>
         <!-- A1/A2 -->
         <param name="serial_baudrate"     type="int"    value="115200"/>
         <!-- param name="serial_baudrate"     type="int"    value="256000"A3 -->
@@ -17,7 +17,7 @@
     </node>
 
     <node pkg="rosserial_python" type="serial_node.py" name="serial_node" unless="$(arg use_rosbag)">
-        <param name="port" value="/dev/ttyUSB1"/>
+        <param name="port" value="/dev/ttyUSB0"/>
         <param name="baud" value="576000"/>
     </node>
     <node pkg="rosbag" type="play" name="play" output="screen" args="--clock $(arg path)$(arg file_1).bag" if="$(arg use_rosbag)"/>
