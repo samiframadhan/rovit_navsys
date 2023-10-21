@@ -2,7 +2,7 @@
   <!-- Arguments -->
   <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
   <arg name="map_file" default="$(find turtlebot3_navigation)/maps/map.yaml"/>
-  <arg name="config" default="offline" docs="config type [voronoi, waypoint, offline]"/>
+  <arg name="config" default="new" docs="config type [new, old]"/>
   <arg name="open_rviz" default="true"/>
   <arg name="move_forward_only" default="false"/>
 
